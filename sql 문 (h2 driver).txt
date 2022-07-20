@@ -1,0 +1,7 @@
+create table member_tbl(no number,name varchar2(50),
+			userid varchar2(20),pwd varchar2(20),email varchar2(50), 	
+			phone varchar2(20),gender number(2),constraint member_tbl_pk primary key(no));
+
+
+create sequence member_seq start with 1 increment by 1;
+
