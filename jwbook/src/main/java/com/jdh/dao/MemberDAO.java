@@ -63,11 +63,9 @@ public class MemberDAO {
 
  
 
-	// 로그인 메소드
-
 	public int userCheck(String userid, String pwd) {
 
-		// (-1 = 아이디 오류, 0 = 비밀번호 오류, 1 = 로그인 성공)
+
 
 		int result=-1;
 
@@ -92,13 +90,11 @@ public class MemberDAO {
 
 				if(rs.getString("pwd") != null && rs.getString("pwd").equals(pwd)) {
 
-					//로그인성공
 
 					result=1;
 
 				} else {
 
-					//비밀번호 틀림
 
 					result=0;
 
@@ -106,7 +102,6 @@ public class MemberDAO {
 
 			} else {
 
-				//아이디 틀림
 
 				result=-1;
 
@@ -140,12 +135,12 @@ public class MemberDAO {
 
 		return result;
 
-	}//userCheck(String userid, String pwd) END
+	}
 
  
 
 
-	// 아이디로 회원 정보 가져오는 메소드
+	// 아이디 회원 정보 
 
 	public MemberDTO getMember(String userid) {
 
@@ -217,7 +212,7 @@ public class MemberDAO {
  
 
  
-	// 아이디 중복 확인 메서드
+	// 아이디 중복 확인 
 
 	public int confirmID(String userid) {
 
@@ -285,7 +280,7 @@ public class MemberDAO {
 
 
  
-	// 회원 가입 메서드
+	// 회원 가입 
 
 	public int insertMember(MemberDTO dto) {
 
@@ -348,7 +343,7 @@ public class MemberDAO {
 
  
 
-	// 회원 정보 수정 메서드
+	// 회원 정보 수정 
 
 	public int updateMember(MemberDTO dto) {
 
@@ -406,4 +401,4 @@ public class MemberDAO {
 	}//updateMember(MemberDTO dto) END
 
 	
-	}//MemberDAO END
+	}
