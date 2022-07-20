@@ -144,7 +144,6 @@ public class MemberDAO {
 
  
 
- 
 
 	// 아이디로 회원 정보 가져오는 메소드
 
@@ -218,9 +217,6 @@ public class MemberDAO {
  
 
  
-
- 
-
 	// 아이디 중복 확인 메서드
 
 	public int confirmID(String userid) {
@@ -287,14 +283,8 @@ public class MemberDAO {
 
  
 
- 
 
  
-
- 
-
- 
-
 	// 회원 가입 메서드
 
 	public int insertMember(MemberDTO dto) {
@@ -358,7 +348,7 @@ public class MemberDAO {
 
  
 
-// 회원 정보 수정 메서드
+	// 회원 정보 수정 메서드
 
 	public int updateMember(MemberDTO dto) {
 
@@ -415,4 +405,5 @@ public class MemberDAO {
 
 	}//updateMember(MemberDTO dto) END
 
+	
 	}//MemberDAO END

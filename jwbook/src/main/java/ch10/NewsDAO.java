@@ -54,7 +54,7 @@ public class NewsDAO {
 		PreparedStatement pstmt = conn.prepareStatement(sql);
 		pstmt.setInt(1, aid);
 		ResultSet rs = pstmt.executeQuery();
-		
+			
 		rs.next();
 		
 		try(conn; pstmt; rs) {

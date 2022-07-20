@@ -30,11 +30,11 @@ private static final long serialVersionUID = 1L;
 
      throws ServletException, IOException {
 
-//main.jsp의 로그아웃 버튼
+
 
       HttpSession session = request.getSession();
 
-//세션 데이터 삭제
+ 
 
      session.invalidate();
 
@@ -44,7 +44,7 @@ private static final long serialVersionUID = 1L;
 
      rd.forward(request, response);
 
-}
+     }
 
  
 
