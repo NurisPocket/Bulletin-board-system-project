@@ -9,7 +9,7 @@
 
     <!--          link 선언          -->
     <link rel="stylesheet" href="./member/style.css">
-    <link rel="stylesheet" href="./member/style_login.css">
+
 
     <!--          script 선언          -->
     <script src="https://kit.fontawesome.com/e1bd1cb2a5.js"></script>

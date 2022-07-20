@@ -16,7 +16,7 @@ public class MemberDTO {
 
 	public MemberDTO() {
 
-	}//기본 생성자
+	}
 
 	public String getName() {
 

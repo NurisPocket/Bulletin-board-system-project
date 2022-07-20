@@ -31,9 +31,7 @@ import com.jdh.dto.*;
 
      throws ServletException, IOException {
 
-          //login.jsp에서 회원가입을 눌렀을때
-
-          //여기서는 회원가입 화면(member/join.jsp)만 응답처리할 것이다.
+ 
 
      RequestDispatcher rd = request.getRequestDispatcher("member/join.jsp");
 
@@ -62,7 +60,7 @@ throws ServletException, IOException {
 	
 	HttpSession session = request.getSession();
 	if(result == 1) {
-		//초기 로그인 화면에서 아이디를 바로 출력하기 위한 코드
+	
 		session.setAttribute("userid", dto.getUserid());
 		session.setAttribute("message", "회원 가입에 성공했습니다.");
 	} else {
