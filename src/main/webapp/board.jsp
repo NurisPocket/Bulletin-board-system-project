@@ -1,5 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ page import="java.io.PrintWriter" %>
+<%@ page import="board.Board" %>
+<%@ page import="board.BoardDAO" %>
+<%@ page import="java.util.ArrayList" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -11,6 +15,7 @@
     <!--          link 선언          -->
     <link rel="stylesheet" href="./member/style.css">
     <link rel="stylesheet" href="./member/style_login.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
 
     <!--          script 선언          -->
     <script src="https://kit.fontawesome.com/e1bd1cb2a5.js"></script>
@@ -57,6 +62,12 @@
 <title>index.jsp</title>
 </head>
 <body>
+	<%
+	int pagenumber =1;
+	if(request.getParameter("pagenumber") != null){
+		pagenumber = Integer.parseInt(request.getParameter("pagenumber"));
+	}
+	%>
 	   <header>
         <div class="header_container">
             <div class="logo_container">
@@ -70,7 +81,7 @@
                            
                         </li>
                         <li class="menu_2">
-                            <a id="wr" class="menu_title" href="board.jsp">게시판 글쓰기</a>
+                            <a id="wr" class="menu_title">게시판 글쓰기</a>
                             
                         </li>
                     </ul>
@@ -84,45 +95,50 @@
             </div>
         </div>
     </header>
-    
- <div class="a"> 
- 	<div class="b">
- 	
- 	<div class="text_box" data-trigger>
-  <span class="text"></span>
-</div>	
- 	</div>
- </div>
+    <div class="container">
+		<div class="row">
+			<table class="table table-striped" style="text-align: center; border: 1px solid #dddddd">
+				<thead>
+					<tr>
+						<th style="background-color:#eeeeee; text-align: center;">번호</th>
+						<th style="background-color:#eeeeee; text-align: center;">제목</th>
+						<th style="background-color:#eeeeee; text-align: center;">작성자</th>
+						<th style="background-color:#eeeeee; text-align: center;">작성일</th>
+					</tr>
+				</thead>
+				<tbody>
+					<%
+						BoardDAO boardDAO = new BoardDAO();
+						ArrayList<Board> list = boardDAO.getList(pagenumber);
+						for(int i=0; i<list.size();i++){
+							%>	
+					<tr>
+						<td><%= list.get(i).getBoardID() %></td>
+						<td><a href="view.jsp?boardID=<%= list.get(i).getBoardID()%>"><%= list.get(i).getBoardTITLE() %></a></td>
+						<td><%= list.get(i).getUserID() %></td>
+						<td><%= list.get(i).getBoardDATE().substring(11,13)+ list.get(i).getBoardDATE().substring(14,16) + "분"%></td>
+					</tr>
+							<%
+						}
+							%>	
+				</tbody>
+				</table>
+				<%
+					if(pagenumber != 1){
+				%>
+					<a href="board.jsp?pagenumber=<%=pagenumber - 1%>" class="btn btn-success btn-arraw-lfet">이전</a>
+				<%
+					} if(boardDAO.nextPage(pagenumber +1)) {
+				%>
+					<a href="board.jsp?pagenumber=<%=pagenumber + 1%>" class="btn btn-success btn-arraw-lfet">다음</a>
+			<%
+					}
+			%>
+			<a href="write.jsp" class="btn btn-primary pull-right">글쓰기</a>
+		</div>	
+    </div>
  
- <script>
- const content = "게시판에 오신 걸 환영합니다!";
- const text = document.querySelector(".text");
- let i = 0;
-
- function typing(){
-     if (i < content.length) {
-     let txt = content.charAt(i);
-     text.innerHTML += txt;
-     i++;
-     }
- }
- setInterval(typing, 200)
- 
- 
- 
- 
- 
-    </script>
-    
-    <footer>
-        <div class="footer_container">
-            <div class="footA">
-                xxx
-            </div>
-            <div class="footB">
-                Copyright © xxx All Rights Reserved.
-            </div>
-        </div>
-    </footer>
+ 	<script src="https;//code.jquery.com/jquery-3.1.1.min.js"></script>
+ 	<script src="js/bootstrap.js"></script>
 </body>
 </html>
